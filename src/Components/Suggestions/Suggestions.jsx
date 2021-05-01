@@ -12,15 +12,16 @@ const socket = io.connect('http://localhost:5000')
 
 const Suggestions = () => {
     const [seeSuggestion, setSeeSuggestion] = useState(false)
-    const [songSuggestion, setSongSuggestion] = useState()
+    const [songSuggestionDetails, setSongSuggestionDetails] = useState()
     const [songData, setSongData] = useState()
 
 
     // UseEffect to render on recieving data from socket
     useEffect(() => {
 
-        socket.on('message', (message) => {
-            console.log('message was: ', message)
+        socket.on('connected', (data) => {
+            console.log(data.msg)
+            console.log('Connection ID: ', data.connectionId)
         })
 
         socket.on('data', (songsData) => {
@@ -28,17 +29,21 @@ const Suggestions = () => {
             setSongData(songsData)
         })
 
+        return () => {
+
+        }
     }, [])
 
 
     // Handling data from API
     const getSongSuggestion = async () => {
         const songSuggestionObject = await getSuggestions();
-        setSongSuggestion(songSuggestionObject)
+        setSongSuggestionDetails(songSuggestionObject)
     }
 
     const getSongTermination = async () => {
         const TerminationDetails = await terminateScheduling();
+        console.log(TerminationDetails)
         // set to next job details state
     }
 
@@ -78,7 +83,6 @@ const Suggestions = () => {
                             {songData.songs.map(song => {
                                 const track = song.track
 
-
                                 return (
                                     <div className="song-division">
                                         <li className="song-details" key={track.id}>
@@ -117,7 +121,7 @@ const Suggestions = () => {
                 {seeSuggestion &&
                     <div className="suggestions-block">
                         <div className="suggestion-control">
-                            <p>{'Next job details'}</p>
+                            {isEmpty(songSuggestionDetails) ? '' : songSuggestionDetails.msg}
                             <Button
                                 className="suggestion-button"
                                 variant="contained"
