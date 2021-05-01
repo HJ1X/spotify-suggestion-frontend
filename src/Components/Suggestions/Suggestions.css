@@ -1,0 +1,95 @@
+.suggestion-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.suggestion-button {
+    margin: 6rem !important;
+    width: 15rem;
+    height: 2.8rem;
+    border-radius: 3rem !important;
+}
+
+.suggestion-button-hidden {
+    display: none !important;
+}
+
+.playlist {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.playlist-details {
+    width: 35%
+}
+
+.playlist-details .image-container {
+    width: 100%;
+    overflow: hidden;
+    padding: 0.7rem;
+}
+
+.playlist-details .image-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.playlist-tracks {
+    width: 60%;
+}
+
+.playlist-tracks ul {
+    list-style: none;
+    margin: 0;
+}
+
+.playlist-tracks ul li {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 7rem
+}
+
+.playlist-tracks ul li img {
+    width: 4rem;
+    border: 1px black solid;
+    padding: 0.5rem;
+    height: auto;
+    margin-right: 2rem;
+}
+
+.playlist-tracks h3 {
+    margin: 0 0 0.4rem 0;
+}
+
+.playlist-tracks h4 {
+    margin: 0;
+    color: grey;
+}
+
+.song-division hr {
+    background-color: rgb(138, 136, 136) !important;
+    height: 1px !important;
+}
+
+.song-division:last-child hr {
+    display: none;
+}
+
+.suggestion-block {
+    width: 100%;
+}
+
+.suggestion-control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem 0;
+    width: 100%;
+}
+
+.suggestion-control .suggestion-button {
+    margin: 0 !important;
+}
